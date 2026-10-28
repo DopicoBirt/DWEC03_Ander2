@@ -52,7 +52,7 @@ formulario.addEventListener("submit", function (e) {
 
   if (encontrado) {
     localStorage.setItem("usuarioActual", JSON.stringify(encontrado));
-    window.location.href = "bienvenida.html";
+    window.location.href = "HTML/bienvenida.html";
   } else {
     mensajeError.textContent = "Usuario o contraseña incorrectos";
   }
