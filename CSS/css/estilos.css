@@ -1,0 +1,33 @@
+#tablero {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  gap: 10px;
+}
+
+.carta {
+  width: 80px;
+  height: 100px;
+  background: #2c3e50;
+  color: white;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s, background-color 0.5s;
+}
+
+.acertada {
+  background: #27ae60;
+}
+
+.resaltada {
+  transform: scale(1.08);
+  box-shadow: 0 0 10px #f1c40f;
+}
+
+.completada {
+  opacity: 0.6;
+}
