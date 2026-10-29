@@ -6,12 +6,28 @@
   <link rel="stylesheet" href="../CSS/css/estilos.css">
 </head>
 <body>
+
+<header class="cabecera">
+  <span>Memoria de Parejas</span>
+  <span></span>
+</header>
+
+<div class="tarjeta">
+  <div class="icono" id="icono">★</div>
   <h1 id="titulo"></h1>
   <p id="resumen"></p>
 
-  <button id="btnJugar">Jugar de nuevo</button>
-  <button id="btnSalir">Salir</button>
+  <div class="datos">
+    <div class="dato"><p>Tiempo</p><p class="numero" id="datoTiempo"></p></div>
+    <div class="dato"><p>Intentos</p><p class="numero" id="datoIntentos"></p></div>
+    <div class="dato"><p>Parejas</p><p class="numero" id="datoParejas"></p></div>
+  </div>
 
-  <script src="../js/js/resultado.js"></script>
+  <p><strong>¿Quieres volver a jugar?</strong></p>
+  <button id="btnSalir" class="btnSecundario">Salir</button>
+  <button id="btnJugar">Jugar otra vez</button>
+</div>
+
+<script src="../js/js/resultado.js"></script>
 </body>
 </html>

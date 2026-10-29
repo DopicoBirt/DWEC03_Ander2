@@ -6,13 +6,34 @@
   <link rel="stylesheet" href="../CSS/css/estilos.css">
 </head>
 <body>
+<header class="cabecera">
+  <span>Memoria de Parejas</span>
+  <span id="textoNivel"></span>
+</header>
+
+ <main class="zonaJuego">
   <section id="info">
-    <p>Tiempo: <span id="tiempo">30</span> s</p>
-    <p>Parejas: <span id="parejas">0</span></p>
-    <p id="estadoPausa"></p>
+    <div class="caja cajaTiempo">
+      <p>Tiempo restante</p>
+      <p class="numero"><span id="tiempo">30</span> s</p>
+      <div class="barra"><div id="barraRelleno"></div></div>
+    </div>
+    <div class="caja">
+      <p>Intentos</p>
+      <p class="numero" id="intentos">0</p>
+    </div>
+    <div class="caja">
+      <p>Parejas</p>
+      <p class="numero"><span id="parejas">0</span> / <span id="totalParejas"></span></p>
+    </div>
+    <div class="caja cajaPausa">
+      <p class="numero">Tecla P</p>
+      <p id="estadoPausa">Pausar / Reanudar</p>
+    </div>
   </section>
 
   <section id="tablero"></section>
+</main>
 
   <script src="../js/js/juego.js"></script>
 </body>

@@ -4,22 +4,53 @@
 <head>
   <meta charset="UTF-8">
   <title>Bienvenida</title>
+  <link rel="stylesheet" href="../CSS/css/estilos.css">
 </head>
 <body>
-  <h1 id="saludo"></h1>
+
+<header class="cabecera">
+  <span>Memoria de Parejas</span>
+  <span id="saludo"></span>
+</header>
+
+<main class="zonaBienvenida">
   <section id="instrucciones">
-    <h2>Instrucciones</h2>
-    <p>Levanta las cartas de dos en dos y encuentra todas las parejas antes de que acaben los 30 segundos. Pulsa P para pausar.</p>
+    <h2>Cómo se juega</h2>
+    <p><span class="paso">1</span> Todas las cartas empiezan boca abajo.</p>
+    <p><span class="paso">2</span> Descubre dos cartas por turno. Si son iguales, se quedan boca arriba.</p>
+    <p><span class="paso">3</span> Si son distintas, se vuelven a tapar. ¡Memoriza dónde están!</p>
+    <p><span class="paso">4</span> Encuentra las parejas antes de que pasen los 30 segundos.</p>
+    <p class="aviso">A mayor dificultad, más cartas en los mismos 30 segundos.</p>
   </section>
-  <label for="selectNivel">Nivel:</label>
-  <select id="selectNivel">
-    <option value="principiante">Principiante (4×2)</option>
-    <option value="intermedio">Intermedio (4×3)</option>
-    <option value="avanzado">Avanzado (4×4)</option>
-  </select>
-  <button id="btnInicio">Empezar</button>
 
+  <section class="niveles">
+    <h2>Elige tu nivel</h2>
 
-  <script src="../js/js/bienvenida.js"></script>
+    <label class="nivel">
+      <input type="radio" name="nivel" value="principiante" checked>
+      <strong>Principiante</strong><br>
+      4 × 2 · 4 parejas<br>
+      <span class="tiempoNivel">Tiempo: 30 s</span>
+    </label>
+
+    <label class="nivel">
+      <input type="radio" name="nivel" value="intermedio">
+      <strong>Intermedio</strong><br>
+      4 × 3 · 6 parejas<br>
+      <span class="tiempoNivel">Tiempo: 30 s</span>
+    </label>
+
+    <label class="nivel">
+      <input type="radio" name="nivel" value="avanzado">
+      <strong>Avanzado</strong><br>
+      4 × 4 · 8 parejas<br>
+      <span class="tiempoNivel">Tiempo: 30 s</span>
+    </label>
+
+    <button id="btnInicio">Jugar</button>
+  </section>
+</main>
+
+<script src="../js/js/bienvenida.js"></script>
 </body>
 </html>

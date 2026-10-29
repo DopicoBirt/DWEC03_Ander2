@@ -1,5 +1,11 @@
 // 1. Leer el nivel que guardó la bienvenida
 const nivel = sessionStorage.getItem("nivel") || "principiante";
+const nombresNivel = {
+  principiante: "Principiante",
+  intermedio: "Intermedio",
+  avanzado: "Avanzado"
+};
+document.getElementById("textoNivel").textContent = "Nivel: " + nombresNivel[nivel];
 
 // 2. Cuántas parejas hay en cada nivel
 let numParejas;
@@ -10,9 +16,10 @@ if (nivel === "principiante") {
 } else {
   numParejas = 8;   // 4x4 = 16 cartas
 }
+document.getElementById("totalParejas").textContent = numParejas;
 
 // 3. Los dibujos de las cartas
-const simbolos = ["🍎", "🍌", "🍇", "🍓", "🍒", "🍍", "🥝", "🍉"];
+const simbolos = ["★", "♥", "♦", "♣", "♠", "●", "▲", "■"];
 
 // 4. Coger los que hacen falta y duplicarlos (cada uno 2 veces = pareja)
 const elegidos = simbolos.slice(0, numParejas);
@@ -28,6 +35,7 @@ let segunda = null;
 let bloqueado = false;
 let parejasEncontradas = 0;
 let pausado = false;
+let intentos = 0;
 
 function voltear(e) {
   const carta = e.currentTarget;
@@ -43,6 +51,9 @@ function voltear(e) {
 
   segunda = carta;
   bloqueado = true;
+
+  intentos++;
+document.getElementById("intentos").textContent = intentos;
 
   if (primera.dataset.simbolo === segunda.dataset.simbolo) {
     primera.classList.add("acertada");
@@ -62,7 +73,7 @@ function voltear(e) {
       primera.textContent = "?";
       segunda.textContent = "?";
       reiniciarTurno();
-    }, 800);
+    }, 1000);
   }
 }
 
@@ -101,9 +112,10 @@ let tiempoRestante = 30;
 const spanTiempo = document.getElementById("tiempo");
 
 const intervalo = setInterval(function () {
-    if (pausado) return;
-    tiempoRestante--;
-    spanTiempo.textContent = tiempoRestante;
+  if (pausado) return;
+  tiempoRestante--;
+  spanTiempo.textContent = tiempoRestante;
+  document.getElementById("barraRelleno").style.width = (tiempoRestante / 30 * 100) + "%";
 
   if (tiempoRestante <= 0) {
     clearInterval(intervalo);
@@ -115,6 +127,8 @@ function terminarPartida(ganado) {
   sessionStorage.setItem("ganado", ganado);
   sessionStorage.setItem("parejas", parejasEncontradas);
   sessionStorage.setItem("tiempoRestante", tiempoRestante);
+  sessionStorage.setItem("intentos", intentos);
+  sessionStorage.setItem("totalParejas", numParejas);
   window.location.href = "resultado.html";
 }
 
@@ -122,6 +136,7 @@ function terminarPartida(ganado) {
 document.addEventListener("keydown", function (e) {
   if (e.key === "p" || e.key === "P") {
     pausado = !pausado;
-    document.getElementById("estadoPausa").textContent = pausado ? "PAUSA" : "";
+    document.getElementById("tablero").classList.toggle("en-pausa");
   }
 });
+

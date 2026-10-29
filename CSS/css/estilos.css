@@ -1,33 +1,295 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4efe6;
+  color: #2d2a4a;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 40px;
+}
+
 #tablero {
   display: grid;
   grid-template-columns: repeat(4, 80px);
+  grid-auto-rows: 100px;
   gap: 10px;
+  justify-content: center;
+  width: fit-content;
+  align-content: start;
+  margin: 0 auto;
 }
 
 .carta {
   width: 80px;
   height: 100px;
-  background: #2c3e50;
+  background: #6b4c9a;
   color: white;
   font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 12px;
+  border: 3px solid transparent;
   cursor: pointer;
   user-select: none;
   transition: transform 0.2s, background-color 0.5s;
 }
 
 .acertada {
-  background: #27ae60;
+  background: #2a9d8f;
 }
 
 .resaltada {
   transform: scale(1.08);
-  box-shadow: 0 0 10px #f1c40f;
+  border-color: #e76f51;
 }
 
 .completada {
   opacity: 0.6;
+}
+
+.zonaJuego {
+  display: flex;
+  gap: 30px;
+  margin: 30px 40px;
+}
+
+#info {
+  width: 200px;
+}
+
+.caja {
+  background-color: white;
+  border: 1px solid #d8d2c2;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.caja p {
+  margin: 5px;
+}
+
+.numero {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.cajaTiempo {
+  background-color: #e76f51;
+  color: white;
+  border: none;
+}
+
+.cajaPausa {
+  background-color: #ede4f7;
+  color: #6b4c9a;
+  border-color: #6b4c9a;
+}
+
+
+button {
+  background-color: #e76f51;
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #d65a3c;
+}
+
+#tablero {
+  position: relative;
+}
+
+.en-pausa .carta {
+  filter: blur(6px);
+}
+
+.en-pausa::after {
+  content: "PAUSA";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  color: #6b4c9a;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 15px 40px;
+  border-radius: 12px;
+}
+
+/* ===== BIENVENIDA ===== */
+.zonaBienvenida {
+  display: flex;
+  gap: 30px;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+#instrucciones,
+.niveles {
+  flex: 1;
+  background: white;
+  border: 1px solid #d8d2c2;
+  border-radius: 12px;
+  padding: 20px 30px;
+  text-align: left;
+}
+
+.paso {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  background: #e9c46a;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.aviso {
+  color: #e76f51;
+  font-weight: bold;
+}
+
+.nivel {
+  display: block;
+  border: 2px solid #d8d2c2;
+  border-radius: 12px;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.nivel input {
+  display: inline;
+  width: auto;
+  margin: 0 8px 0 0;
+}
+
+.nivel:has(input:checked) {
+  background: #ede4f7;
+  border-color: #6b4c9a;
+}
+
+.tiempoNivel {
+  display: block;
+  color: #888;
+  font-size: 14px;
+}
+
+#btnInicio {
+  width: 100%;
+  margin: 10px 0 0 0;
+}
+
+
+.tarjeta {
+  background-color: white;
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+#formLogin {
+  background-color: white;
+  max-width: 350px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40px;
+  padding: 20px 0;
+  border-bottom: 2px solid #d8d2c2;
+  font-weight: bold;
+  color: #555;
+}
+
+.barra {
+  background-color: rgba(255, 255, 255, 0.4);
+  height: 8px;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+#barraRelleno {
+  background-color: white;
+  height: 8px;
+  width: 100%;
+  border-radius: 4px;
+  transition: width 1s linear;
+}
+
+.icono {
+  background-color: #e9c46a;
+  color: white;
+  font-size: 50px;
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.datos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.dato {
+  background-color: #ede4f7;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.dato p {
+  margin: 3px;
+}
+
+.dato .numero {
+  color: #6b4c9a;
+}
+
+.btnSecundario {
+  background-color: white;
+  color: #2d2a4a;
+  border: 2px solid #2d2a4a;
+}
+
+.btnSecundario:hover {
+  background-color: #f4efe6;
 }
