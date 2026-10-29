@@ -8,6 +8,7 @@ body {
   background-color: #f4efe6;
   color: #2d2a4a;
   text-align: center;
+  font-size: 18px;
 }
 
 h1 {
@@ -26,11 +27,11 @@ h1 {
 }
 
 .carta {
-  width: 80px;
-  height: 100px;
+  width: 110px;
+  height: 140px;
   background: #6b4c9a;
   color: white;
-  font-size: 40px;
+  font-size: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,31 +46,37 @@ h1 {
   background: #2a9d8f;
 }
 
+.carta.volteada {
+  background-color: white;
+  border-color: #2d2a4a;
+}
+
 .resaltada {
   transform: scale(1.08);
   border-color: #e76f51;
 }
 
 .completada {
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 .zonaJuego {
   display: flex;
-  gap: 30px;
-  margin: 30px 40px;
+  justify-content: center;
+  gap: 60px;
+  margin: 40px;
 }
 
 #info {
-  width: 200px;
+  width: 280px;
 }
 
 .caja {
-  background-color: white;
+  background: white;
   border: 1px solid #d8d2c2;
   border-radius: 12px;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 20px 10px;
+  margin-bottom: 20px;
 }
 
 .caja p {
@@ -77,7 +84,7 @@ h1 {
 }
 
 .numero {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
 }
 
@@ -112,6 +119,9 @@ button:hover {
 
 #tablero {
   position: relative;
+  grid-template-columns: repeat(4, 110px);
+  grid-auto-rows: 140px;
+  gap: 15px;
 }
 
 .en-pausa .carta {
@@ -136,8 +146,8 @@ button:hover {
 .zonaBienvenida {
   display: flex;
   gap: 30px;
-  max-width: 900px;
-  margin: 40px auto;
+  max-width: 1100px;
+  margin: 100px auto;
 }
 
 #instrucciones,
@@ -202,18 +212,9 @@ button:hover {
 
 .tarjeta {
   background-color: white;
-  max-width: 450px;
+  max-width: 600px;
   margin: 60px auto;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-#formLogin {
-  background-color: white;
-  max-width: 350px;
-  margin: 20px auto;
-  padding: 25px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
@@ -292,4 +293,103 @@ input {
 
 .btnSecundario:hover {
   background-color: #f4efe6;
+}
+
+/* ===== LOGIN ===== */
+.login {
+  display: flex;
+  min-height: 100vh;
+}
+
+.login-portada {
+  flex: 1;
+  background: #2a9d8f;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-portada h1 {
+  font-size: 30px;
+  margin: 30px 0 10px 0;
+}
+
+.miniTablero {
+  display: grid;
+  grid-template-columns: repeat(3, 95px);
+  gap: 15px;
+}
+
+.mini {
+  height: 95px;
+  background: white;
+  border-radius: 14px;
+  font-size: 45px;
+  line-height: 95px;
+}
+
+.mini.oculta {
+  background: #3a2a4f;
+  color: #c9b8e8;
+  font-size: 32px;
+}
+
+.amarillo { color: #e9a822; }
+.rojo { color: #e63946; }
+.verde { color: #2a9d8f; }
+
+.login-formulario {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#formLogin {
+  width: 340px;
+  text-align: left;
+}
+
+#formLogin h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.subtitulo {
+  text-align: center;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+#formLogin label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#formLogin input {
+  border: 2px solid #d8d2c2;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+#formLogin button {
+  width: 100%;
+  margin: 15px 0 0 0;
+}
+
+.error {
+  background: #fde4e1;
+  color: #c0392b;
+  border: 1px solid #e76f51;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.error:empty {
+  display: none;
 }

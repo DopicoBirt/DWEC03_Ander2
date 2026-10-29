@@ -21,6 +21,18 @@ document.getElementById("totalParejas").textContent = numParejas;
 // 3. Los dibujos de las cartas
 const simbolos = ["★", "♥", "♦", "♣", "♠", "●", "▲", "■"];
 
+// Color de cada símbolo
+const colores = {
+  "★": "#e9a822",
+  "♥": "#e63946",
+  "♦": "#2a9d8f",
+  "♣": "#3a86ff",
+  "♠": "#457b9d",
+  "●": "#f4a261",
+  "▲": "#8ab17d",
+  "■": "#9b5de5"
+};
+
 // 4. Coger los que hacen falta y duplicarlos (cada uno 2 veces = pareja)
 const elegidos = simbolos.slice(0, numParejas);
 const cartas = elegidos.concat(elegidos);
@@ -37,12 +49,15 @@ let parejasEncontradas = 0;
 let pausado = false;
 let intentos = 0;
 
+
 function voltear(e) {
   const carta = e.currentTarget;
   
   if (pausado || bloqueado || carta === primera || carta.classList.contains("acertada")) return;
 
   carta.textContent = carta.dataset.simbolo;
+  carta.classList.add("volteada");
+  carta.style.color = colores[carta.dataset.simbolo];
 
   if (primera === null) {
     primera = carta;
@@ -53,14 +68,21 @@ function voltear(e) {
   bloqueado = true;
 
   intentos++;
-document.getElementById("intentos").textContent = intentos;
+  document.getElementById("intentos").textContent = intentos;
 
   if (primera.dataset.simbolo === segunda.dataset.simbolo) {
+    const color = colores[primera.dataset.simbolo];
+    primera.classList.remove("volteada");
+    segunda.classList.remove("volteada");
+    primera.style.backgroundColor = color;
+    segunda.style.backgroundColor = color;
+    primera.style.color = "white";
+    segunda.style.color = "white";
     primera.classList.add("acertada");
     segunda.classList.add("acertada");
     parejasEncontradas++;
     document.getElementById("parejas").textContent = parejasEncontradas;
-        if (parejasEncontradas === numParejas) {
+    if (parejasEncontradas === numParejas) {
       clearInterval(intervalo);
       setTimeout(function () {
         terminarPartida(true);
@@ -72,10 +94,15 @@ document.getElementById("intentos").textContent = intentos;
     setTimeout(function () {
       primera.textContent = "?";
       segunda.textContent = "?";
+      primera.classList.remove("volteada");
+      segunda.classList.remove("volteada");
+      primera.style.color = "";
+      segunda.style.color = "";
       reiniciarTurno();
     }, 1000);
   }
 }
+
 
 function reiniciarTurno() {
   primera = null;

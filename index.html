@@ -5,30 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memoria de Parejas - Inicio de sesión</title>
         <link rel="stylesheet" href="CSS/css/estilos.css">
-        <link rel="stylesheet" href="CSS/css/estilos.css">
+        
 </head>
 <body>
-    <main class="login">
-    <section class="login-portada">
-      <h1>Memoria de Parejas</h1>
-      <p>★ ♥ ♦ ♣</p>
-    </section>
+  <main class="login">
+  <section class="login-portada">
+    <div class="miniTablero">
+      <div class="mini"><span class="amarillo">★</span></div>
+      <div class="mini oculta">?</div>
+      <div class="mini"><span class="rojo">♥</span></div>
+      <div class="mini oculta">?</div>
+      <div class="mini oculta">?</div>
+      <div class="mini"><span class="verde">♦</span></div>
+      <div class="mini oculta">?</div>
+      <div class="mini"><span class="rojo">♥</span></div>
+      <div class="mini"><span class="verde">♦</span></div>
+      <div class="mini oculta">?</div>
+      <div class="mini"><span class="amarillo">★</span></div>
+      <div class="mini oculta">?</div>
+    </div>
+    <h1>Memoria de Parejas</h1>
+    <p>Encuentra todas las parejas<br>antes de que se acabe el tiempo</p>
+  </section>
 
-    <section class="login-formulario">
-      <h2>Inicia sesión</h2>
-      <form id="formLogin">
-        <label for="usuario">Usuario</label>
-        <input type="text" id="usuario" required>
+  <section class="login-formulario">
+    <form id="formLogin">
+      <h2>Iniciar sesión</h2>
+      <p class="subtitulo">Entra para empezar a jugar</p>
 
-        <label for="contrasena">Contraseña</label>
-        <input type="password" id="contrasena" required>
+      <label for="usuario">Usuario</label>
+      <input type="text" id="usuario" placeholder="nombre de usuario" required>
 
-        <p id="mensajeError" class="error"></p>
+      <label for="contrasena">Contraseña</label>
+      <input type="password" id="contrasena" placeholder="••••••••" required>
 
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-  </main>
+      <button type="submit">Enviar</button>
+
+      <p id="mensajeError" class="error"></p>
+    </form>
+  </section>
+</main>
 
   <script src="js/js/login.js"></script>
 </body>
